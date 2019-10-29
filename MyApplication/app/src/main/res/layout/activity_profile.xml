@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/test1"
+    tools:context=".ProfileActivity">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/find_friends_profile_image"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="120dp"
+        app:civ_border_color="@color/white"
+        android:src="@drawable/profile_image"
+        >
+    </de.hdodenhof.circleimageview.CircleImageView>
+    <TextView
+        android:id="@+id/find_friends_profile_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User Name"
+        android:layout_below="@+id/find_friends_profile_image"
+        android:textColor="@color/colorPrimary"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        ></TextView>
+
+    <TextView
+        android:id="@+id/find_friends_profile_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Status find friends"
+        android:layout_below="@+id/find_friends_profile_name"
+        android:textColor="@color/colorPrimary"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        ></TextView>
+
+    <Button
+        android:id="@+id/find_friends_profile_request_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/find_friends_profile_status"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="70dp"
+        android:background="@drawable/buttons"
+        android:text="Add Friends"
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_light"
+        android:textSize="20sp"
+        android:textStyle="bold">
+
+    </Button>
+
+    <Button
+        android:id="@+id/find_friends_profile_denided_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/find_friends_profile_request_btn"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="70dp"
+        android:background="@drawable/buttons"
+        android:text="Denided"
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_light"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:enabled="false"
+        android:visibility="invisible">
+
+    </Button>
+
+</RelativeLayout>
