@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -38,6 +40,7 @@ public class ChatsFragment extends Fragment {
     private DatabaseReference ChatListRequestsRef, UsersRef, ContactsRef;
     private FirebaseAuth myAuth;
     private String currentUserID;
+
 
     public ChatsFragment() {
         // Required empty public constructor
@@ -75,15 +78,16 @@ public class ChatsFragment extends Fragment {
                     @Override
                     protected void onBindViewHolder(@NonNull final ChatsViewHolder holder, int position, @NonNull Contacts contacts) {
                         final String list_user_id_chats = getRef(position).getKey();
+                        final String[] imageUserChat = {"defauly"};
 
                         UsersRef.child(list_user_id_chats).addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 if (dataSnapshot.exists()) {
                                     if (dataSnapshot.hasChild("image")) {
-                                        final String imageUserChat = dataSnapshot.child("image").getValue().toString();
+                                        imageUserChat[0] = dataSnapshot.child("image").getValue().toString();
 
-                                        Picasso.get().load(imageUserChat).into(holder.profileImage);
+                                        Picasso.get().load(imageUserChat[0]).into(holder.profileImage);
                                     }
                                     final String userNameChat = dataSnapshot.child("name").getValue().toString();
                                     final String userStatusChat = dataSnapshot.child("status").getValue().toString();
@@ -97,6 +101,7 @@ public class ChatsFragment extends Fragment {
                                             Intent chatIntent = new Intent(getContext(), ChatActivity.class);
                                             chatIntent.putExtra("user_id_chat", list_user_id_chats);
                                             chatIntent.putExtra("user_id_name", userNameChat);
+                                            chatIntent.putExtra("user_id_image", imageUserChat[0]);
                                             startActivity(chatIntent);
                                         }
                                     });

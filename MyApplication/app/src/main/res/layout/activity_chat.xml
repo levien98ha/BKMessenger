@@ -39,8 +39,9 @@
         <ImageButton
             android:id="@+id/send_messenger_btn"
             android:layout_width="65dp"
-            android:layout_height="70dp"
-            android:src="@drawable/send_message"/>
+            android:layout_height="60dp"
+            android:src="@drawable/send_message1"
+            android:background="@color/white"/>
 
     </LinearLayout>
 

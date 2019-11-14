@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/message_profile_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/profile_image"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="2dp"
+        >
+
+    </de.hdodenhof.circleimageview.CircleImageView>
+
+    <TextView
+        android:id="@+id/receiver_messenger_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/message_profile_image"
+        android:background="@drawable/receiver_messenger_layout"
+        android:layout_marginLeft="3dp"
+        android:text="Receiver messages"
+        android:padding="10dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        ></TextView>
+
+    <TextView
+        android:id="@+id/sender_messenger_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="@+id/receiver_messenger_text"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/sender_messenger_layout"
+        android:text="Send messenger"
+        android:padding="10dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:layout_marginRight="4dp"
+        ></TextView>
+</RelativeLayout>
