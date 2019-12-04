@@ -29,7 +29,31 @@
         android:textSize="15sp"
         android:textStyle="bold"
         android:textColor="@android:color/black"
-        ></TextView>
+        >
+
+    </TextView>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/sender_messenger_image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="5dp"
+        android:scaleType="centerCrop">
+
+    </androidx.appcompat.widget.AppCompatImageView>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/receiver_messenger_image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="15dp"
+        android:scaleType="centerCrop">
+
+    </androidx.appcompat.widget.AppCompatImageView>
 
     <TextView
         android:id="@+id/sender_messenger_text"
@@ -45,5 +69,7 @@
         android:textStyle="bold"
         android:textColor="@android:color/white"
         android:layout_marginRight="4dp"
-        ></TextView>
+        >
+
+    </TextView>
 </RelativeLayout>
