@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -54,9 +55,7 @@ public class ContactsFragment extends Fragment {
         myContactsList.setLayoutManager(new LinearLayoutManager(getContext()));
 
         myAuth = FirebaseAuth.getInstance();
-        currentUserId = myAuth.getCurrentUser().getUid();
-        UserReference = FirebaseDatabase.getInstance().getReference().child("Users");
-        ContactsReference = FirebaseDatabase.getInstance().getReference().child("Contacts").child(currentUserId);
+
 
         return contactsView;
     }
@@ -65,6 +64,11 @@ public class ContactsFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        FirebaseUser currentUser1 = myAuth.getCurrentUser();
+        if(currentUser1 != null) {
+        currentUserId = myAuth.getCurrentUser().getUid();
+        UserReference = FirebaseDatabase.getInstance().getReference().child("Users");
+        ContactsReference = FirebaseDatabase.getInstance().getReference().child("Contacts").child(currentUserId);
         FirebaseRecyclerOptions options = new FirebaseRecyclerOptions.Builder<Contacts>().setQuery(ContactsReference, Contacts.class).build();
 
         FirebaseRecyclerAdapter<Contacts, ContactsViewHolder> adapter = new FirebaseRecyclerAdapter<Contacts, ContactsViewHolder>(options) {
@@ -132,7 +136,7 @@ public class ContactsFragment extends Fragment {
         };
         myContactsList.setAdapter(adapter);
         adapter.startListening();
-    }
+    }}
 
     public static class ContactsViewHolder extends RecyclerView.ViewHolder{
 

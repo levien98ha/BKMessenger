@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -54,9 +55,7 @@ public class ChatsFragment extends Fragment {
         PrivateChatView = inflater.inflate(R.layout.fragment_chats, container, false);
 
         myAuth = FirebaseAuth.getInstance();
-        currentUserID = myAuth.getCurrentUser().getUid();
-        ChatListRequestsRef = FirebaseDatabase.getInstance().getReference().child("Contacts").child(currentUserID);
-        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
+
 
         chatsList = (RecyclerView) PrivateChatView.findViewById(R.id.chats_list);
         chatsList.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -67,6 +66,13 @@ public class ChatsFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+
+        FirebaseUser currentUser1 = myAuth.getCurrentUser();
+
+        if(currentUser1 != null) {
+            currentUserID = currentUser1.getUid();
+            ChatListRequestsRef = FirebaseDatabase.getInstance().getReference().child("Contacts").child(currentUserID);
+            UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
         FirebaseRecyclerOptions<Contacts> options =
                 new FirebaseRecyclerOptions.Builder<Contacts>()
@@ -142,7 +148,7 @@ public class ChatsFragment extends Fragment {
                 };
         chatsList.setAdapter(adapter);
         adapter.startListening();
-    }
+    }        }
 
     public static class ChatsViewHolder extends RecyclerView.ViewHolder{
         TextView userName, userStatus;
